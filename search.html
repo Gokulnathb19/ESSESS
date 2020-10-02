@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
+    <link rel="stylesheet" type="text/css" href="./css/modal.css">
+    <link rel="stylesheet" type="text/css" href="./css/icons.min.css">
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <title>ESS Search</title>
+    <style type="text/css">
+        #noDataFound {
+            color: brown;
+            display: none;
+            text-align: center;
+        }
+        .table-responsive {
+            display: block;
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #dee2e6;
+            display: block;
+            max-height: 360px;
+            overflow-y: scroll;
+        }
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+            padding: .75rem;
+        }
+        .table th {
+            text-align: center;
+            border-bottom-width: 2px;
+        }
+        .table tbody > tr:nth-child(odd) {
+            background-color: #f0f0f0;
+        }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="form-container">
+        <form id="searchForm" autocomplete="off" onsubmit="return getSearchLists(event);">
+            <h3  style="color: dodgerblue; text-align: center; margin: 0;">Search Files</h3>
+            <ul class="row">
+                <li>
+                    <div class="col-3">
+                        <input list="fileNos" id="sFileNo" placeholder="File No" />
+                        <datalist id="fileNos"></datalist>
+                    </div>
+                    <div class="col-5">
+                        <input list="names" id="sName" placeholder="Name" />
+                        <datalist id="names"></datalist>
+                    </div>
+                    <div class="col-4">
+                        <input list="mobileNos" id="sMobileNo" placeholder="Mobile No" />
+                        <datalist id="mobileNos"></datalist>
+                    </div>
+                </li>
+                <li>
+                    <div class="col-6">
+                        <input list="districts" id="sDistrict" placeholder="District" />
+                        <datalist id="districts"></datalist>
+                    </div>
+                    <div class="col-6">
+                        <input list="states" id="sState" placeholder="State" />
+                        <datalist id="states"></datalist>
+                    </div>					
+                </li>
+                <li>
+                    <div class="col-6">
+                        <input style="background-color:dodgerblue; color: white;" type="submit" name="search" id="searchBtn" value="Search" />
+                    </div>
+                    <div class="col-6">
+                        <input style="background-color:green; color: white;" type="submit" name="allFiles" id="allFiles" value="Get All Files" />
+                    </div>	
+                </li>
+                <li>
+                    <div class="col-12" id="noDataFound">No Data Found</div>
+                </li>  
+            </ul>
+        </form>
+    </div>
+    <div id="searchResults" style="display: none;" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close" onClick="closeResults();">&times;</span>
+                <h3>Search Results</h3>
+            </div>
+            <div id="searchData" class="modal-body">
+                
+            </div>
+            <div class="modal-footer">
+                <button style="background-color: dodgerblue; color: white;" onclick="closeResults();">Close</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/search.js"></script>
+  </body>
+</html>

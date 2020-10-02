@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
+    <title>Valuation FMS</title>
+    <script src="./js/jquery-3.5.1.min.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url('./public/images/building.jpg');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .forms-container {
+            background-color: white;
+            display: flex;
+            border: 0.1rem #c0c0c0 solid;
+            border-radius: 0.5rem;
+            justify-content: space-around;
+            align-items: baseline;
+            margin: 10px;
+        }
+        #register, #search {
+            margin: 10px;
+        }
+        @media all and (max-width: 600px) {
+            .forms-container {
+                display: flex;
+                flex-direction: column;
+                border: 0.1rem #c0c0c0 solid;
+                border-radius: 0.5rem;
+                align-content: space-around;
+                padding: 10px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: brown; text-align: center; margin: 0;">Valuation File Management System</h1>
+    <div class="forms-container">
+        <div id="register">
+        </div>
+        <div id="search">
+        </div>
+    </div>
+    <script>
+        $.get("./register.html", function(data){
+            $("#register").html(data);
+        });
+        $.get("./search.html", (data) => {
+            $('#search').html(data);
+        })
+    </script>
+    <footer style="background-color: black; padding: 15px; color: white">
+        <center>Developed by <a style="color: chocolate;" href="http://gokulnathb.dx.am">Gokulnath B</a> for Saravanarajan N, an IBBS Valuer</center>
+    </footer>
+  </body>
+</html>
